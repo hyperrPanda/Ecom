@@ -1,0 +1,29 @@
+
+
+$query = "CREATE TABLE IF NOT EXISTS CUSTOMERS (
+emailid VARCHAR(50) PRIMARY KEY,
+name VARCHAR(50),
+password VARCHAR(50),
+phonenumber VARCHAR(50)
+);";
+
+
+
+$query = "CREATE TABLE IF NOT EXISTS BOOKINGS (
+        bookingid INT AUTO_INCREMENT PRIMARY KEY,
+        emailid VARCHAR(50) Not Null,
+        name VARCHAR(50) Not Null,
+        unitnumber VARCHAR(50) Null,
+        phonenumber VARCHAR(50) Not Null,
+
+        snumber VARCHAR(50) Not Null,
+        sname VARCHAR(50) Not Null,
+        suburb VARCHAR(50) Not Null,
+        Dsuburb VARCHAR(50) Not Null,
+        pickdate VARCHAR(50) Not Null,
+        picktime VARCHAR(50) Not Null,
+        status VARCHAR(50) Not Null,
+        FOREIGN KEY (`emailid`) REFERENCES CUSTOMERS (`emailid`)
+        );";
+
+

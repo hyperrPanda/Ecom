@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="new customer registration" />
+	<meta name="keywords" content="HTML, JavaScript, PHP, ajax, XML, XSLT" />
+	<meta name="author" content="Rahul The Great" />
+	<!-- Below are the Contents for processing page-->
+
+	<title>Processing Page</title>
+</head>
+<body>
+
+		<table width="30%" cellspacing="2" cellpadding="10" border="10" align="center" >
+			<tr>
+				<td> <strong><a href="listing.htm">Listings</a></label> </strong></td>
+				<td> <strong><a href="processing.htm">Processing</a> </label> </strong></td>
+				<td> <strong><a href="logout.htm">Logout</a></label> </strong></td>
+
+			</tr>
+
+</table>
+
+</div>
+
+	<p id="msg"></p>
+
+<script>
+var xhr = false;
+if (window.XMLHttpRequest) {
+	xhr = new XMLHttpRequest();
+}
+else if (window.ActiveXObject) {
+	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function testInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('msg').innerHTML = xhr.responseText;
+    //alert(xhr.responseText);
+	}
+
+}
+function loadGoods()
+{
+	var listitems= 0;
+	xhr.open ("GET", "processing.php?listitems=" + listitems, true);
+
+	xhr.onreadystatechange = testInput;
+
+	xhr.send(null);
+
+}
+
+function process(obj)
+{
+	var listitems= 1;
+	xhr.open ("GET", "processing.php?listitems=" + listitems, true);
+
+	xhr.onreadystatechange = testInput;
+
+	xhr.send(null);
+
+}
+
+loadGoods();
+
+</script>
+
+</body>
+</html>

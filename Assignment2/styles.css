@@ -1,0 +1,308 @@
+/*
+filename: Rahul
+author: Rahul
+created: 15/3/2019
+last modified: 15/3/2019
+description: Css stylesheet for my assignmennt 1
+*/
+hr
+{
+  height: 20px;
+
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+ footer{
+  width:100%;
+  height:20px;
+
+  text-align:center;
+  bottom:0;
+  left:0;
+
+  font-size: 20px;
+  color:red;
+}
+
+.homesite h1 {
+  font:  small-caps normal 63px Arial, Helvetica, sans-serif;
+  text-align: center;
+  color: #6029cf;
+}
+.pagecontent aside
+{
+  width:25%;
+  float: right;
+  border: 4px inset #2749A7;
+  margin-right: 20px;
+  padding:10px;
+}
+
+body
+{
+   font-family: "Courier New", Courier, monospace; line-height: 20px; margin-bottom: 15px; color: #666;
+   background-color: #ECEAE0;
+}
+
+#Mabutton
+{
+
+  width: 20em;  height:5em;
+}
+#docspace
+{
+  height: 200px;
+}
+
+
+.indeximg
+{
+  text-align: center;
+}
+
+/*
+vertical menu
+Navigation fixed
+*/
+
+.homesite {
+  margin: 0 auto;
+  max-width: 1600px;
+  position: relative;
+
+}
+.homesite:before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 19%;
+  display: block;
+  background: #DDDDDD;
+}
+
+.pagecontent {
+  position: relative;
+  margin-left: 240px;
+
+}
+#aboutheader
+{
+
+  color: black;
+}
+#homepage
+{
+  background: url("homewallpaper.PNG");
+  height: 400px;
+
+
+}
+#homepage h2
+{
+  text-align: right;
+  color:#d91c8a;
+}
+
+#jobpage
+{
+  background: url("images/jobspageimage.jpg");
+
+}
+#applypage
+{
+  background: url("images/jobspageimage.jpg");
+
+}
+#applypage,#jobpage h2
+{
+  text-align: right;
+}
+.navmenu {
+  position: fixed;
+  font-size: 50px;
+  padding: 15px;
+  display: block;
+  background: #DDDDDD;
+  top: 120px;
+  bottom: 0;
+  left: 0;
+
+}
+
+
+
+
+
+.navmenu a:hover {
+  background-color: #AAAAAA;
+}
+.navmenu a {
+    text-decoration: none; /* Remove the underline */
+    background-color: #DDDDDD;
+    display: block; /* Appear below each other */
+    color: black;
+  padding: 10px;
+
+}
+
+
+.navmenu a.current {
+  background-color: #AAAAAA;
+  color: black;
+}
+
+
+
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+dt {
+  float: left;
+  width: 30%;
+  padding: 0;
+  margin: 0
+}
+dd {
+  float: left;
+  width: 50%;
+  padding: 0;
+  margin: 0
+}
+
+.pagecontent dt
+{
+  font-weight: bolder;
+}
+
+video
+{
+  height:55% ;
+  width: 55%;
+}
+
+
+#devphoto
+{
+
+  border: 2px solid #AAAAAA;
+  border-radius: 2px;
+  padding: 2px;
+  width: 80px;
+  float: right;
+  margin-top: -100px;
+}
+
+.timetable table, th, td
+{
+  border: 1px solid black;
+  align-self: center;
+  margin: 0 auto;
+
+}
+
+.timetable  td
+{
+  color: black;
+  background-color: #AAAAAA;
+}
+/*
+Mail content
+*/
+
+#maillink
+{
+text-align: center;
+}
+
+form
+{
+
+    width: 100%;
+  box-sizing:content-box;
+  border: 10px solid #AAAAAA;
+  font-size: 16px;
+  background-position: 10px 10px;
+  padding: 13px 21px 11px 41px;
+}
+
+
+#buttons
+{
+text-align: center;
+}
+/*
+Enhancements Animation
+*/
+
+.enlist ol
+{
+  font:  small-caps normal 23px Arial, Helvetica, sans-serif;
+margin-top: 300px;
+
+}
+
+
+
+
+
+.pageimage
+{
+  height: 250px;
+  width: 380px;
+
+  margin: 20px;
+  clip-path: polygon(
+    0% 0%, 101% 0%,
+    101% 77%,
+    75% 75%, 74% 100%,
+    51% 75%,
+    0% 76%
+  );
+  animation: custom1 8s infinite;
+
+}
+
+
+@keyframes custom1 {
+  from {
+    clip-path: polygon(50% 51%,
+      50% 50%, 52% 50%, 50% 50%, 51% 50%, 50% 51%, 52% 50%);
+  }
+}
+
+
+
+.pageimage2
+{
+  height: 250px;
+  width: 380px;
+
+  margin: 15px;
+   clip-path: polygon(
+     0% 21%, 40% 20%, 42% 0%,
+     100% 51%,
+     41% 100%,
+     40% 80%,
+     0% 81%
+   );
+   animation: custom2 5s infinite;
+
+}
+
+
+@keyframes  custom2 {
+  from {
+    clip-path: polygon(0% 51%,
+      0% 52%, 0% 50%, 0% 51%, 0% 51%,
+      50% 0%, 52% 0%);
+  }
+}

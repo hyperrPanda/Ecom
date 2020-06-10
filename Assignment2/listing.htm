@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="new customer registration" />
+	<meta name="keywords" content="HTML, JavaScript, PHP, ajax, XML, XSLT" />
+	<meta name="author" content="Rahul The Great" />
+    																																											<!-- Listing page -->
+	<title>Listing Page</title>
+</head>
+<body>
+
+		<table width="30%" cellspacing="2" cellpadding="10" border="10" align="center" >
+			<tr>
+				<td> <strong><a href="listing.htm">Listings</a></label> </strong></td>
+				<td> <strong><a href="processing.htm">Processing</a> </label> </strong></td>
+				<td> <strong><a href="logout.htm">Logout</a></label> </strong></td>
+
+			</tr>
+
+		</table>
+
+		<h3> Add New Item</h3>
+<div>
+		<table >
+				<tr>
+					<label for="itemname">Item Name</label>
+ 		       <input type="text" name= "itemname" id="itemname" required="required"/>
+
+				</tr>
+				<tr>
+					<label for="itemprice">Item Price</label>
+					 <input type="text" name= "itemprice" id="itemprice" required="required"/>
+
+				</tr>
+				<tr>
+					<label for="itemq">Item Quantity</label>
+					 <input type="text" name= "itemq" id="itemq" required="required"/>
+<br>
+				</tr>
+				<tr><br>
+					<label for="itemdef">Item Description</label>
+						<textarea id="itemdef" rows="4" cols="50">
+	</textarea>
+<br>
+				</tr>
+				<tr >
+					<br>
+					<button onclick="cleanIt();">Reset</button>
+					 	<button onclick="saveIt();">Lets Add</button>
+
+				</tr>
+
+			</table>
+
+</div>
+
+	<p id="msg"></p>
+
+<script>
+var xhr = false;
+if (window.XMLHttpRequest) {
+	xhr = new XMLHttpRequest();
+}
+else if (window.ActiveXObject) {
+	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function  saveDataXml() {
+	var itemname= document.getElementById("itemname").value;
+	var itemq = document.getElementById('itemq').value;
+	var itemp = document.getElementById('itemprice').value;
+	var itemdef = document.getElementById('itemdef').value;
+
+	xhr.open("GET", "listing.php?itemname=" + itemname + "&itemq=" + itemq + "&itemp="+ itemp + "&itemdef=" + itemdef, true);
+
+	xhr.onreadystatechange = testInput;
+	xhr.send(null);
+
+}
+
+function testInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('msg').innerHTML = xhr.responseText;
+	}
+
+}
+
+
+
+function validDateData(){
+var flag=false;
+var itemq = document.getElementById('itemq').value;
+var itemp = document.getElementById('itemprice').value;
+var itemdef = document.getElementById('itemdef').value;
+
+if((isNaN(itemq))||(isNaN(itemp)))
+{
+ alert("PLease enter number value for price and quantity");
+ flag=false;
+ 	return flag;
+}else{
+	if((document.getElementById("itemname").value=="")||itemq ==""||itemp==""||itemdef=="" || (Number.isInteger(itemp))||(Number.isInteger(itemq)))
+{
+	alert("Please fill correct details, no blanks, no variable for price and quantity");
+flag=false;
+	return flag;
+}else { flag=true;
+	return flag;}
+
+}
+}
+
+function cleanIt(){
+
+	document.getElementById("itemname").value ="";
+	document.getElementById('itemprice').value="";
+	document.getElementById('itemq').value="";
+	document.getElementById('itemdef').value ="";
+
+
+}
+function saveIt(){
+
+if(validDateData())
+{
+	saveDataXml();
+}
+}
+
+</script>
+
+</body>
+</html>

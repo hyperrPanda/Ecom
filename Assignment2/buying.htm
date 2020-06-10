@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<!-- Below are the Contents for register page -->
+<html lang="en">
+<head>
+                                                    <!-- Meta info of register page -->
+  <meta charset="utf-8" />
+  <meta name="description" content="Demonstrates Home Page Content" />
+  <meta name="keywords" content="Home, index" />
+  <meta name="author" content="Student"  />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link href="styles.css" rel="stylesheet" />
+  <title>Shopping Page</title>
+
+</head>
+<body>
+
+                                            <!-- here i will create body of register page -->
+
+<div class="pagecontent">
+   <article align=center>
+
+     <h2>Lets Buy</h2>
+     <strong><a onclick="logUserOut();" href="logout.htm">Logout</a></label> </strong>
+
+
+				<p id="msg"></p>
+
+        	<p id="cartmsg"></p>
+
+<div id=docspace> </div>
+
+   </article>
+
+ </div>
+
+</body>
+<script>
+
+
+function finalisePurchase(customerChoice){
+
+  xhr.open ("GET", "getData.php?customerChoice=" + customerChoice, true);
+
+  xhr.onreadystatechange = cartInput;
+
+  xhr.send(null);
+
+}
+
+
+function loadShoppingcart(objectid, num)
+{
+  var removeFlag= 0;
+  if(num==1){
+removeFlag= 1;
+  }
+  listitems=null;
+  xhr.open ("GET", "getData.php?objectid=" + objectid+  "&removeFlag="+ removeFlag , true);
+  objectid =null;
+  listitems=true;
+  xhr.onreadystatechange = cartInput;
+
+  xhr.send(null);
+}
+
+function cartInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('cartmsg').innerHTML = xhr.responseText;
+    //alert(xhr.responseText);
+	}
+
+}
+
+function AddIt(clickedid){
+  loadShoppingcart(clickedid,0);
+}
+function RemoveIt(clickedid){
+  loadShoppingcart(clickedid,1);
+}
+
+var xhr = false;
+if (window.XMLHttpRequest) {
+	xhr = new XMLHttpRequest();
+}
+else if (window.ActiveXObject) {
+	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function loadData(){
+
+	xhr.open ("GET", "getData.php?listitems=" + listitems, true);
+
+	xhr.onreadystatechange = testInput;
+
+	xhr.send(null);
+
+}
+
+
+
+
+function logUserOut(){
+
+var logOutFlag=1;
+  xhr.open ("GET", "getData.php?logOutFlag=" + logOutFlag , true);
+  objectid =null;
+  listitems=true;
+  xhr.onreadystatechange = cartInput;
+
+  xhr.send(null);
+
+
+}
+
+
+function testInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('msg').innerHTML = xhr.responseText;
+    //alert(xhr.responseText);
+	}
+
+}
+var listitems=true;
+loadData();
+
+setInterval(loadData, 10000);
+</script>
+
+
+</html>

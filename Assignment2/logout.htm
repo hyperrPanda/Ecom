@@ -1,0 +1,61 @@
+
+     <!DOCTYPE html>
+<!-- Below are the Contents for logout page -->
+<html lang="en">
+<head>
+
+
+
+  <meta charset="utf-8" />
+  <meta name="description" content="Demonstrates Home Page Content" />
+  <meta name="keywords" content="Home, index" />
+  <meta name="author" content="Student"  />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link href="styles.css" rel="stylesheet" />
+  <title>Logout</title>
+
+</head>
+<body >
+
+
+
+
+<div class="pagecontent">
+   <article align=center>
+
+     <h2>Logged Out</h2>
+      <div id=docspace> </div>                                                                             <!-- Here is the PHP code to create customers-->
+
+<p id="logouttxt"><strong> Thanks</strong></p>
+
+</body>
+<script>
+
+function maFunction(){
+  var idm="";
+  var cid="";
+   idm=sessionStorage.getItem("managerid");
+   cid=sessionStorage.getItem("customerid");
+if(cid==null)
+{document.getElementById("logouttxt").innerText="Thanks Manager: "+idm;
+sessionStorage.clear() ;
+	}
+else {
+  document.getElementById("logouttxt").innerText="Thanks Customer: "+cid;
+  sessionStorage.clear() ;
+}
+
+}
+
+
+
+document.onload= maFunction();
+
+
+</script>
+
+
+
+
+</html>

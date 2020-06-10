@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="new customer registration" />
+	<meta name="keywords" content="HTML, JavaScript, PHP, ajax, XML, XSLT" />
+	<meta name="author" content="Wei Lai" />
+	<title>Customer Registration</title>
+													<!-- Below are the Contents for register page-->
+</head>
+<body>
+
+	<p>Please fill in the fields below to complete your registration.</p>
+
+
+	 <p><label for="name"><b>First Name</label>
+		 <input type="text" name= "name" id="name" required="required"/>
+	 </p>
+	 <p><label for="lastname"><b>Last Name</label>
+		 <input type="text" name= "lastname" id="lastname" required="required"/>
+	 </p>
+	 <p><label for="password">Password</label>
+		 <input type="text" name= "password" id="password" required="required"/>
+	 </p>
+	 <p><label for="cpassword">Confirm Password</label>
+		 <input type="text" name= "cpassword" id="cpassword" required="required"/>
+	 </p>
+	 <p><label for="email">Email</label>
+		 <input type="text" name= "email" id="email" required="required"/>
+	 </p>
+	 <p><label for="phone">Phone</label>
+		 <input type="text" name= "phone" id="phone"  required="required"/>
+	 </p>
+
+	 <button onclick="registerUser();"> Register</button>
+
+
+
+	<p id="msg"></p>
+</body>
+
+
+<script>
+var xhr = false;
+if (window.XMLHttpRequest) {
+	xhr = new XMLHttpRequest();
+}
+else if (window.ActiveXObject) {
+	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+
+// access user inputs from customer page and pass them
+// to custRegister.php
+function registerUser() {
+
+	var name = document.getElementById('name').value;
+		var lastname = document.getElementById('lastname').value;
+		var email = document.getElementById('email').value;
+		var password = document.getElementById('password').value;
+		var cpassword = document.getElementById('cpassword').value;
+		var phone = document.getElementById('phone').value;
+
+		xhr.open("GET", "testRegister.php?name=" + name + "&email=" + encodeURIComponent(email) + "&password=" +password +  "&cpassword=" +cpassword + "&phone=" +phone + "&lastname=" + lastname, true);
+
+		xhr.onreadystatechange = testTheInput;
+		xhr.send(null);
+
+}
+
+function testTheInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('msg').innerHTML = xhr.responseText;
+		//alert(xhr.responseText);
+	}
+
+}
+
+
+
+
+
+</script>
+</html>

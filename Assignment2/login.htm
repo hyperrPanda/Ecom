@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+                                                          <!-- Below are the Contents for login page -->
+
+<html lang="en">
+<head>
+                                                    <!-- Meta info of register page -->
+  <meta charset="utf-8" />
+  <meta name="description" content="Demonstrates Home Page Content" />
+  <meta name="keywords" content="Home, index" />
+  <meta name="author" content="Student"  />
+  <script type="text/javascript" src="register.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <link href="styles.css" rel="stylesheet" />
+  <title>Customer</title>
+
+</head>
+<body>
+
+                                            <!-- here i will create body of register page -->
+
+<div class="pagecontent">
+   <article align=center>
+
+     <h2>Welcome Customer</h2>
+      <div id=docspace> </div>
+
+			<table>
+					<tr>
+						<p><label for="emailid"><b>Customer EmailId</label>
+	 		       <input type="text" name= "emailid" id="emailid" required="required"/>
+	 		     </p>
+					</tr>
+					<tr>
+						<p><label for="password"><b>Password</label>
+						 <input type="text" name= "password" id="password" required="required"/>
+					 </p>
+					</tr>
+			<button onclick="loginCustomer();">LOGIN</button>
+
+				</table>
+
+	<p id="msg"></p>
+<div id=docspace> </div>
+
+   </article>
+ </div>
+
+</body>
+<script>
+var xhr = false;
+if (window.XMLHttpRequest) {
+	xhr = new XMLHttpRequest();
+}
+else if (window.ActiveXObject) {
+	xhr = new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function  saveDataXml() {
+	var email = document.getElementById('emailid').value;
+	var password= document.getElementById('password').value;
+
+	xhr.open("GET", "clogin.php?emailid=" + encodeURIComponent(email)+ "&password=" + password, true);
+
+	xhr.onreadystatechange = testInput;
+	xhr.send(null);
+
+}
+
+function testInput() {
+
+	if ((xhr.readyState == 4) && (xhr.status == 200)) {
+		document.getElementById('msg').innerHTML = xhr.responseText;
+
+		                var response = JSON.parse(xhr.responseText);
+		                if(response.location){
+											var tmpcid= response.customerid;
+											sessionStorage.setItem("customerid", tmpcid);
+		                  window.location.href = response.location;
+		                }
+		            }
+
+		    }
+
+
+
+
+function validDateData(){
+var flag=false;
+var email = document.getElementById('emailid').value;
+var password= document.getElementById('password').value;
+
+	if(email=""||password =="")
+{
+	alert("Please fill all the Fields");
+flag=false;
+	return flag;
+}else { flag=true;
+	return flag;}
+}
+
+
+function loginCustomer(){
+
+	if(validDateData())
+	{
+		saveDataXml();
+	}
+}
+
+</script>
+
+
+
+</html>
